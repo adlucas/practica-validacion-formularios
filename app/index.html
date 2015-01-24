@@ -28,7 +28,7 @@
 
 
 
-<form class="form-horizontal">
+<form class="form-horizontal" id="formulario">
 <fieldset>
 
 <!-- Form Name -->
@@ -125,7 +125,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="facturacionNombre">Nombre/Empresa:</label>  
+  <label class="col-md-4 control-label" id="lblDemandante" for="facturacionNombre">Nombre/Empresa:</label>  
   <div class="col-md-4">
   <input id="facturacionNombre" name="facturacionNombre" type="text" placeholder="" class="form-control input-md" required="">
     
@@ -222,7 +222,7 @@
 <!-- Password input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="pass2">Repetir contraseña:</label>
-  <div class="col-md-4">
+  <div class="col-md-4"><
     <input id="pass2" name="pass2" type="password" placeholder="" class="form-control input-md">
     
   </div>
@@ -252,6 +252,9 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
+        <script src="scripts/iban.js"></script>
+        <script src="scripts/messages_es.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>
