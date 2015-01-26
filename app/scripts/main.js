@@ -22,7 +22,9 @@
                         equalTo: email
                     },cp:{
                     	required:true,
-                    	maxlength:5
+                    	maxlength:5,
+                    	minlength:5,
+                    	digits:true
                     },
                     iban:{
                     	/*ES91 2085 0166 69 0330150871*/
@@ -50,7 +52,16 @@
                     pass2: {
                         required: true,
                         equalTo: pass
+                    },
+                    cif: {
+                        required:true,
+                        cifES:true
+                    },
+                    nif: {
+                        required:true,
+                        nifES:true
                     }
+                    
                     
                 }
                 });
@@ -59,13 +70,17 @@
 $("#cp").focusout(function() {
                 var caracteres = $("#cp").val();
                 var num=5-caracteres.length;
-                var cero=0;
+                var cero="0";
+
+                if(num!=0){
                 for(i=1;i<num;i++){
                 	cero+="0";
                 }
 
                 $("#cp").val(cero + caracteres);
-               
+               }else{
+               	$("#cp").val(caracteres);
+               }
 
               
                 
@@ -84,21 +99,32 @@ $("#apellidos").focusout(function() {
 //combobox empresa/particular al cambiar a empresa, se debe cambiar el label de facturacion nombre/empresa
 $("#demandante").focusout(function() {
 				
-				var prueba="holaaaa";
+				
 				if($("#demandante").val()==2){
 
  				/********************************************************/
 				
-               	$("#nifcif").html("CIF:");
+               	$("#nif2").html("CIF:");
                 $("#lblDemandante").html("Empresa:");
+                $("#nif").attr({
+				   	"id": "cif",
+				  	"name": "cif"
+				});
+				                
                 
                // $("#facturacionNombre").val("aaaaa");
 
 
                 }
                 else{
- 					$("#nifcif").html("NIF:");
+ 					$("#nif2").html("NIF:");
 				 	$("#lblDemandante").html("Nombre:");
+                	$("#cif").attr({
+					   	"id": "nif",
+					  	"name": "nif"
+					});
+					                	
+
 
                 }
 
