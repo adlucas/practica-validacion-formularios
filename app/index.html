@@ -116,7 +116,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="nif">NIF/CIF:</label>  
+  <label class="col-md-4 control-label" id="nifcif" for="nif">NIF:</label>  
   <div class="col-md-4">
   <input id="nif" name="nif" type="text" placeholder="" class="form-control input-md" required="">
     
@@ -125,7 +125,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" id="lblDemandante" for="facturacionNombre">Nombre/Empresa:</label>  
+  <label class="col-md-4 control-label" id="lblDemandante" for="facturacionNombre">Nombre:</label>  
   <div class="col-md-4">
   <input id="facturacionNombre" name="facturacionNombre" type="text" placeholder="" class="form-control input-md" required="">
     
@@ -205,7 +205,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="usuario">Usuario:</label>  
   <div class="col-md-4">
-  <input id="usuario" name="usuario" type="text" placeholder="" class="form-control input-md" required="">
+  <input id="usuario" name="usuario" type="text" disabled="false" placeholder="" class="form-control input-md" required="">
     
   </div>
 </div>
@@ -215,6 +215,7 @@
   <label class="col-md-4 control-label" for="pass">Contraseña:</label>
   <div class="col-md-4">
     <input id="pass" name="pass" type="password" placeholder="" class="form-control input-md" required="">
+    <meter value="0" id="PassValue"  low="30" high="7" min="0" max="100"></meter>
     
   </div>
 </div>
@@ -222,8 +223,9 @@
 <!-- Password input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="pass2">Repetir contraseña:</label>
-  <div class="col-md-4"><
+  <div class="col-md-4">
     <input id="pass2" name="pass2" type="password" placeholder="" class="form-control input-md">
+   
     
   </div>
 </div>
@@ -253,6 +255,8 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
         <script src="scripts/iban.js"></script>
+        <script src="scripts/jquery.complexify.banlist.js"></script>
+        <script src="scripts/jquery.complexify.js"></script>
         <script src="scripts/messages_es.js"></script>
 
         <!-- endbuild -->

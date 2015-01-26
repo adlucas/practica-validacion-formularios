@@ -11,18 +11,21 @@
                         
                     },
                     email: {
-                       required:true
+                       required:true,
+                       minlength:4
                         //remote:"php/validar_email_db.php",
                         //email:true
                     }, 
                     email2: {
                         required: true,
+                        minlength:4,
                         equalTo: email
                     },cp:{
                     	required:true,
                     	maxlength:5
                     },
                     iban:{
+                    	/*ES91 2085 0166 69 0330150871*/
                     	iban:true,
                     	required:true
                     	
@@ -31,37 +34,40 @@
                         required: true,
                         maxlength:9,
                         minlength:9,
-                        digits:!0
+                        digits:true
 
                     },
                     lastName1: {
                        required:true
+                    },
+                    pass: {
+                       required:true,
+
+                       controlPass:true
+						
+	                     
+                    }, 
+                    pass2: {
+                        required: true,
+                        equalTo: pass
                     }
+                    
                 }
                 });
-//si el cp tiene menos de 5 cifras relleno con ceros
+//si el cp tiene menos de 5 cifras relleno con ceros a la izq
+//cp entre 01000 y 52999
 $("#cp").focusout(function() {
                 var caracteres = $("#cp").val();
                 var num=5-caracteres.length;
                 var cero=0;
-                switch(num){
-                	case 1:
-                	cero=0;
-                	$("#cp").val(cero + caracteres);
-                	break;
-                	case 2:
-                	cero=00;
-                	$("#cp").val(cero + caracteres);
-                	break;
-                	case 3:
-                	cero=000;
-                	$("#cp").val(cero + caracteres);
-                	break;
-
+                for(i=1;i<num;i++){
+                	cero+="0";
                 }
 
-               // if (caracteres.length <= 4){
+                $("#cp").val(cero + caracteres);
                
+
+              
                 
 
             });
@@ -83,16 +89,52 @@ $("#demandante").focusout(function() {
 
  				/********************************************************/
 				
-              
-                $("#lblDemandante").innerHTML="aaaaa";
-               
+               	$("#nifcif").html("CIF:");
+                $("#lblDemandante").html("Empresa:");
+                
+               // $("#facturacionNombre").val("aaaaa");
 
 
                 }
                 else{
-
-				$("#lblDemandante").value="particular";
+ 					$("#nifcif").html("NIF:");
+				 	$("#lblDemandante").html("Nombre:");
 
                 }
 
             });
+
+//el campo usuario se rellenara con el campo email
+$("#email2").focusout(function() {
+                
+                $("#usuario").val($("#email2").val());
+                $("#usuario").disabled="true";
+
+            });
+//prueba pass
+$("#pass").focusin(function() {
+
+                $("#pass").complexify({}, function(valid, complexity){
+    //alert("Password complexity: " + complexity);
+
+    			$("#PassValue").val(complexity);
+
+    
+  });
+
+
+});
+
+jQuery.validator.addMethod("controlPass", function(value,element) {
+
+	var prueba=$("#PassValue").val();
+
+  if(prueba<30){
+  	alert("ERROR");
+  	return false;
+  }else{
+  	  	alert("ok");
+
+  return true;
+	}
+}, "Complejidad demasiado baja");
