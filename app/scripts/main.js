@@ -12,8 +12,9 @@
                     },
                     email: {
                        required:true,
-                       minlength:4
-                        //remote:"php/validar_email_db.php",
+                       minlength:4,
+                       email:true,
+                       remote:"php/validar_email_db.php"
                         //email:true
                     }, 
                     email2: {
@@ -59,7 +60,8 @@
                     },
                     nif: {
                         required:true,
-                        nifES:true
+                        nifES:true,
+                        remote:"php/validar_nif_db.php"
                     }
                     
                     
@@ -150,7 +152,7 @@ $("#pass").focusin(function() {
 
 
 });
-
+//complejidad de la contraseña, minimo 30% para validar
 jQuery.validator.addMethod("controlPass", function(value,element) {
 
 	var prueba=$("#PassValue").val();
