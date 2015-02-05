@@ -2,9 +2,15 @@
 /* Descomentaríamos la siguiente línea para mostrar errores de php en el fichero: */
 // ini_set('display_errors', '1');
 /* Definimos los parámetros de conexión con la bbdd: */
+/*
 $dbinfo = "mysql:dbname=provincias;host=localhost";
 $user = "root";
 $pass = "1234";
+*/
+
+$dbinfo = "mysql:dbname=angeldelucas_provincias;host=localhost";
+$user = "angeldelucas_a";
+$pass = "123456";
 //Nos intentamos conectar:
 try {
     /* conectamos con bbdd e inicializamos conexión como UTF8 */
@@ -21,7 +27,7 @@ if (isset($_POST['zip'])) {
     /* La línea siguiente la podemos descomentar para ver desde firebug-xhr si se pasa bien el parámetro desde el formulario */
     //echo $_REQUEST['email'];
     ?>
-alert("hola");
+
     <?php
    
     $sql = $db->prepare("SELECT Municipio,CodPostal FROM t_municipios WHERE CodPostal=?");
@@ -44,11 +50,11 @@ alert("hola");
     */
    // $okey = $sql->fetch(); 
        ?>
-alert("llega"); 
+ 
     <?php  
     while ($row=$sql->fetch()) {   
            ?>
-alert("entra");
+
     <?php
     $opciones.= "<option ='{$row['CodPostal']}'>{$row['Municipio']}</option>";
   

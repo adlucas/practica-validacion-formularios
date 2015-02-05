@@ -114,7 +114,7 @@ $cp=$("#cp").val();
 
  //si los dos primeros digitos son menores de 10, me tengo que quedar solo con el 2ºnumero
  if($zip.substr(0,1)==0){
-  alert($zip.substr(1,2));
+ 
          $zip = $cp.substr(1,1);
          
  }
@@ -207,10 +207,10 @@ jQuery.validator.addMethod("controlPass", function(value,element) {
   var prueba=$("#PassValue").val();
 
   if(prueba<30){
-    alert("ERROR");
+   // alert("ERROR");
     return false;
   }else{
-        alert("ok");
+     
 
   return true;
   }
